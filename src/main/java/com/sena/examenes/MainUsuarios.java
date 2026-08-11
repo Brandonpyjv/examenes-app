@@ -2,7 +2,8 @@ package com.sena.examenes;
 
 import com.sena.examenes.application.port.in.UsuarioUseCase;
 import com.sena.examenes.application.service.UsuarioService;
-import com.sena.examenes.domain.model.Usuario;
+
+import com.sena.examenes.domain.model.Usuario;  //al ser hexagonal, no se toca el dominio.
 
 public class MainUsuarios {
 

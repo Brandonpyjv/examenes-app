@@ -26,5 +26,6 @@ public class MainUsuarios {
         int totalActivos = usuarioUseCase.listarActivos().size();
 
         System.out.println("Usuarios activos: " + totalActivos);
+        System.out.println(usuarioUseCase.listarActivos());
     }
 }

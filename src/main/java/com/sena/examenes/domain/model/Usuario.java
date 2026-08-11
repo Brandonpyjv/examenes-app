@@ -23,4 +23,13 @@ public class Usuario {
     public void desactivar() {
         this.activo = false;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", activo=" + activo +
+                '}';
+    }
 }

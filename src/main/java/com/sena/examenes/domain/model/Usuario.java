@@ -1,9 +1,11 @@
 package com.sena.examenes.domain.model;
 
 public class Usuario {
+
     private String username;
     private String email;
     private boolean activo;
+
     public Usuario(String username, String email) {
         if (username == null || username.isBlank()) {
             throw new IllegalArgumentException("El username no puede estar vacio.");

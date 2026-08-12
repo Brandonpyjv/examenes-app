@@ -40,4 +40,9 @@ public class UsuarioController {
                 .map(UsuarioResponse::desde)
                 .toList();
     }
+
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<String> manejarDuplicado(IllegalStateException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
 }

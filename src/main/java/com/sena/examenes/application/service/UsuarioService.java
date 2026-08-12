@@ -24,7 +24,7 @@ public class UsuarioService implements UsuarioUseCase {
         Usuario nuevo = new Usuario(username, email);
         return usuarioRepositoryPort.guardar(nuevo);
     }
-    
+
     @Override
     public Optional<Usuario> buscarPorUsername(String username) {
         return usuarioRepositoryPort.buscarPorUsername(username);

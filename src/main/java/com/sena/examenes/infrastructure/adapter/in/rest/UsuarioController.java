@@ -6,11 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/usuarios")
-
 public class UsuarioController {
+
     private final UsuarioUseCase usuarioUseCase;
 
     public UsuarioController(UsuarioUseCase usuarioUseCase) {
@@ -41,8 +42,26 @@ public class UsuarioController {
                 .toList();
     }
 
+    @PostMapping("/{username}/roles/{nombreRol}")
+    public ResponseEntity<UsuarioResponse> asignarRol(
+            @PathVariable String username,
+            @PathVariable String nombreRol) {
+        Usuario usuario = usuarioUseCase.asignarRol(username, nombreRol);
+        return ResponseEntity.ok(UsuarioResponse.desde(usuario));
+    }
+
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<String> manejarDuplicado(IllegalStateException e) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> manejarDatosInvalidos(IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<String> manejarNoEncontrado(NoSuchElementException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 }

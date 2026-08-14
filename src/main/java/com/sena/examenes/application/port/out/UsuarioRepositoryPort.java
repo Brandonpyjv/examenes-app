@@ -13,5 +13,4 @@ public interface UsuarioRepositoryPort {
     List<Usuario> listarActivos();
 
     boolean existePorUsername(String username);
-
 }

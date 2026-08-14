@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Documentacion interna (no se publica) ###
+docs-interno/

@@ -16,6 +16,7 @@ public class UsuarioService implements UsuarioUseCase {
         this.usuarioRepositoryPort = usuarioRepositoryPort;
 
     }
+
     @Override
     public Usuario registrar(String username, String email) {
         if (usuarioRepositoryPort.existePorUsername(username)) {
